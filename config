@@ -152,7 +152,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #bindsym $mod+Ctrl+l exec i3lock -u --dpms -c 000000
-bindsym $mod+Ctrl+l exec ~/lock.sh
+bindsym $mod+Ctrl+l exec lock.sh
 
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
