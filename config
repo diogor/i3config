@@ -187,3 +187,7 @@ bar {
 	}
 }
 exec_always feh --bg-scale /home/diogo/Imagens/wallpaper.jpg
+exec_always compton
+gaps outer 0
+gaps inner 5
+smart_gaps on
