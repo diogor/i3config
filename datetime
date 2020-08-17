@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+from subprocess import check_output
+
+date = check_output(['date', '+%a %d %b'])
+time = check_output(['date', '+%H:%M'])
+datef = "".join(date.decode().split('\n'))
+timef = "".join(time.decode().split('\n'))
+
+print(f'\uf073 {datef} \uf017 {timef} ')

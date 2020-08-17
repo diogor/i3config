@@ -167,7 +167,7 @@ set $back-green          #1d2426
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $active-blue           $bg-color          $fore-green          $bg-color
+client.focused          $grey-blue           $bg-color          $fore-green          $bg-color
 client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
