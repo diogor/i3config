@@ -9,11 +9,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 9
+font pango:Hack 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,7 +30,7 @@ font pango:System San Francisco Display 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -167,27 +167,28 @@ set $back-green          #1d2426
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $fore-green          $bgcolor
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $bgcolor
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $bgcolor
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bgcolor
+client.focused          $active-blue           $bg-color          $fore-green          $bg-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c /home/diogo/.i3/i3blocks.conf
+        status_command i3blocks -c /home/diogo/.config/i3/i3blocks.conf
 	#position top
 	colors {
 		background $bg-color
 	    	separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $orange          $bg-color
+		focused_workspace  $bg-color          $active-blue          $bg-color
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
 exec_always feh --bg-scale /home/diogo/Imagens/wallpaper.jpg
-exec_always compton
+exec_always picom
+exec_always setxkbmap -layout br
 #exec synclient TouchpadOff=1
 gaps outer 0
 gaps inner 4
