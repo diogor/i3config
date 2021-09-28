@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack 10
+font pango:Hack 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -36,7 +36,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "dmenu_run -nf '#80FFF9' -nb '#010D1D' -sb '#80FFF9' -sf '#010D1D' -fn 'Hack-10' -p '>'"
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -154,50 +154,42 @@ bindsym $mod+r mode "resize"
 #bindsym $mod+Ctrl+l exec i3lock -u --dpms -c 000000
 bindsym $mod+Ctrl+l exec /home/diogo/.config/i3/lock.sh
 
-set $bg-color 	           #011733
-set $bg-color-alt	   #010d1d
-set $border-color	   #80fff9
-set $inactive-border-color #428481
-set $text-color            #ffffff
-set $inactive-text-color   #a5a5a5
-set $inactive-text-color-alt   #333333
-set $unfocused-text-color  #888888
-set $urgent-color     	   #ff8888
-set $urgent-text-color     #b0f3ff
-set $binding-color	   #908001
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+set $active-blue         #007fff
+set $grey-blue           #5f676a
+set $orange              #ff9433
+set $fore-green          #8fa388
+set $back-green          #1d2426
 
+# window colors
+#                       border              background         text                 indicator
+client.focused          $grey-blue           $bg-color          $fore-green          $bg-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
 
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-client.focused          $border-color $bg-color $text-color $border-color $border-color
-client.focused_inactive $inactive-border-color $bg-color $inactive-text-color $inactive-border-color $inactive-border-color
-client.unfocused        $bg-color $bg-color $unfocused-text-color $bg-color $bg-color
-client.urgent           $urgent-color $bg-color $urgent-text-color $urgent-color 
-client.placeholder      $bg-color $bg-color $text-color $bg-color $bg-color
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3blocks -c /home/diogo/.config/i3/i3blocks.conf
-	position top
+	#position top
 	colors {
-		background $bg-color-alt
-	    	separator $unfocused-text-color
-		statusline $text-color
+		background $bg-color
+	    	separator #757575
 		#                  border             background         text
-		focused_workspace  $border-color          $border-color          $bg-color-alt
-		active_workspace   $border-color          $bg-color-alt          $text-color
-		inactive_workspace $inactive-text-color-alt	    $bg-color-alt 	     $unfocused-text-color
-		focused_workspace  $border-color          $border-color          $bg-color-alt
-		binding_mode   	   $binding-color   	    $bg-color-alt          $urgent-text-color
+		focused_workspace  $bg-color          $active-blue          $bg-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
-exec_always lxsession
-#exec_always feh --bg-scale /home/diogo/Imagens/wallpaper.jpg
-exec_always nitrogen --restore
+exec_always feh --bg-scale /home/diogo/Imagens/wallpaper.jpg
 exec_always picom
 exec_always setxkbmap -layout br
 #exec synclient TouchpadOff=1
 gaps outer 0
 gaps inner 4
 smart_gaps on
-smart_borders on
