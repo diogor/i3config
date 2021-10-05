@@ -206,4 +206,4 @@ exec volumeicon
 exec xbindkeys 
 exec_always setxkbmap -layout br
 gaps outer 0
-gaps inner 6
+gaps inner 8
